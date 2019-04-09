@@ -1,0 +1,27 @@
+version: '3.3'
+services:
+
+  php:
+    build:
+      context: ./php
+    container_name: php
+    volumes:
+      - "../:/var/www/projet_openclassrooms/projet4_openclassrooms"
+  nginx:
+    image: nginx
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - "../:/var/www/projet_openclassrooms/projet4_openclassrooms"
+      - "./nginx/conf.d/project.conf:/etc/nginx/conf.d/project.conf"
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    ports:
+      - "8080:8080"
