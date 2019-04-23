@@ -1,19 +1,43 @@
 <?php
 
-namespace config;
+namespace App;
 
+/**
+ * Class Managers
+ * @package App
+ */
 class Managers
 {
+    /**
+     * @var null
+     */
     protected $api = null;
+
+    /**
+     * @var null
+     */
     protected $dao = null;
+
+    /**
+     * @var array
+     */
     protected $managers = [];
 
+    /**
+     * Managers constructor.
+     * @param $api
+     * @param $dao
+     */
     public function __construct($api, $dao)
     {
         $this->api = $api;
         $this->dao = $dao;
     }
 
+    /**
+     * @param $module
+     * @return mixed
+     */
     public function getManagerOf($module)
     {
         if (!is_string($module) || empty($module))

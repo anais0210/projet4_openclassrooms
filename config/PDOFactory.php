@@ -1,8 +1,16 @@
 <?php
-namespace config;
 
+namespace App;
+
+/**
+ * Class PDOFactory
+ * @package App
+ */
 class PDOFactory
 {
+    /**
+     * @return \PDO
+     */
     public static function Connect()
     {
         $db = new \PDO('mysql:host=blog.local;dbname=db', 'root', 'root');

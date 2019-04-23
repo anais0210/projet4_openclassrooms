@@ -1,14 +1,41 @@
 <?php
-namespace config;
 
+namespace App;
+
+/**
+ * Class Kernel
+ * @package App
+ */
 abstract class Kernel
 {
+    /**
+     * @var HTTPRequest
+     */
     protected $httpRequest;
+
+    /**
+     * @var HTTPResponse
+     */
     protected $httpResponse;
+
+    /**
+     * @var string
+     */
     protected $name;
+
+    /**
+     * @var User
+     */
     protected $user;
+
+    /**
+     * @var Config
+     */
     protected $config;
 
+    /**
+     * Kernel constructor.
+     */
     public function __construct()
     {
         $this->httpRequest = new HTTPRequest($this);
@@ -19,9 +46,12 @@ abstract class Kernel
         $this->name = '';
     }
 
+    /**
+     * @return mixed
+     */
     public function getController()
     {
-        $router = new Router;
+        $router = new Router();
 
         $xml = new \DOMDocument;
         $xml->load(__DIR__.'/../../App/'.$this->name.'/Config/routes.xml');
@@ -65,28 +95,46 @@ abstract class Kernel
         return new $controllerClass($this, $matchedRoute->module(), $matchedRoute->action());
     }
 
+    /**
+     * @return mixed
+     */
     abstract public function run();
 
+    /**
+     * @return HTTPRequest
+     */
     public function httpRequest()
     {
         return $this->httpRequest;
     }
 
+    /**
+     * @return HTTPResponse
+     */
     public function httpResponse()
     {
         return $this->httpResponse;
     }
 
+    /**
+     * @return string
+     */
     public function name()
     {
         return $this->name;
     }
 
+    /**
+     * @return Config
+     */
     public function config()
     {
         return $this->config;
     }
 
+    /**
+     * @return User
+     */
     public function user()
     {
         return $this->user;

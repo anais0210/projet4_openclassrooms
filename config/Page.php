@@ -1,11 +1,27 @@
 <?php
-namespace config;
 
+namespace App;
+
+/**
+ * Class Page
+ * @package App
+ */
 class Page extends KernelComponent
 {
+    /**
+     * @var $contentFile
+     */
     protected $contentFile;
+
+    /**
+     * @var array
+     */
     protected $vars = [];
 
+    /**
+     * @param $var
+     * @param $value
+     */
     public function addVar($var, $value)
     {
         if (!is_string($var) || is_numeric($var) || empty($var))
@@ -16,6 +32,9 @@ class Page extends KernelComponent
         $this->vars[$var] = $value;
     }
 
+    /**
+     * @return false|string
+     */
     public function getGeneratedPage()
     {
         if (!file_exists($this->contentFile))
@@ -32,10 +51,13 @@ class Page extends KernelComponent
         $content = ob_get_clean();
 
         ob_start();
-        require __DIR__.'/../../App/'.$this->app->name().'/Templates/layout.php';
+        require __DIR__.'/../../App/'.$this->app->name().'Templates/layout.php';
         return ob_get_clean();
     }
 
+    /**
+     * @param $contentFile
+     */
     public function setContentFile($contentFile)
     {
         if (!is_string($contentFile) || empty($contentFile))
