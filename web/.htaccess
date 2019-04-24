@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteRule ^admin/ autoload.php?app=Backoffice [QSA,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ autoload.php?app=FrontOffice [QSA,L]
