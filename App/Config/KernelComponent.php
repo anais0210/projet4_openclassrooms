@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Config;
 
 /**
  * Class KernelComponent
- * @package App
+ * @package App\Config
  */
 abstract class KernelComponent
 {

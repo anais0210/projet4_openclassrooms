@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Backend;
+namespace App\BackOffice;
 
 use App\BackOffice\Modules\Connexion\ConnexionController;
-use App\Kernel;
+use App\Config\Kernel;
 
 /**
  * Class BackOfficeKernel
@@ -15,7 +15,7 @@ class BackOfficeKernel extends Kernel
     {
         parent::__construct();
 
-        $this->name = 'Backend';
+        $this->name = 'BackOffice';
     }
 
     /**

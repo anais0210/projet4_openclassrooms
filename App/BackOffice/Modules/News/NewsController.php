@@ -2,11 +2,11 @@
 
 namespace App\BackOffice\Modules\News;
 
-use App\BackOfficeController;
+use App\Controller\BackOfficeController;
 use App\HTTPRequest;
 use Entity\News;
 use Entity\Comment;
-use App\FormBuilder\CommentFormBuilder;
+use FormBuilder\CommentFormBuilder;
 use FormBuilder\NewsFormBuilder;
 use App\FormHandler;
 

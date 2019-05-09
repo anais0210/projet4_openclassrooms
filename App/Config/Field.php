@@ -1,6 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Config;
+
+use Service\Validator;
 
 /**
  * Class Field

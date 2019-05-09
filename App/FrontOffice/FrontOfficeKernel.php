@@ -1,12 +1,12 @@
 <?php
 
-namespace App\FrontOfficeKernel;
+namespace App\FrontOffice;
 
-use App\Kernel;
+use App\Config\Kernel;
 
 /**
  * Class FrontOfficeKernel
- * @package App\FrontOfficeKernel
+ * @package App\FrontOffice
  */
 class FrontOfficeKernel extends Kernel
 {
@@ -17,7 +17,7 @@ class FrontOfficeKernel extends Kernel
     {
         parent::__construct();
 
-        $this->name = 'Frontend';
+        $this->name = 'FrontOffice';
     }
 
     /**

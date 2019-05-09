@@ -1,11 +1,14 @@
-FROM php:7.2-fpm-alpine
+FROM php:7.2-apache
 
-RUN apk add --no-cache $PHPIZE_DEPS autoconf c-client cmake curl git g++ mysql-client openssh-client python \
-   cyrus-sasl-dev icu-dev icu-libs imap imap-dev libmcrypt libmcrypt-dev libmemcached libmemcached-dev \
-   libxml2 libxml2-dev postgresql-dev postgresql-libs rabbitmq-c rabbitmq-c-dev sqlite-dev sqlite-libs zlib zlib-dev \
-&& pecl install amqp memcached redis xdebug \
-&& docker-php-ext-enable amqp memcached redis xdebug \
-&& docker-php-ext-install bcmath imap intl mbstring opcache pcntl pdo pdo_mysql pdo_pgsql soap zip \
-&& apk info | grep "\-dev" | xargs apk del autoconf dpkg file g++ gcc pkgconf re2c python
+RUN a2enmod rewrite
 
-WORKDIR /var/www/projet_openclassrooms/projet4_openclassrooms
+RUN apt-get update && apt-get install -y $PHPIZE_DEPS make curl git g++ mysql-client openssh-client libxml2 libxml2-dev zip unzip
+RUN docker-php-ext-install bcmath intl mbstring opcache pcntl pdo pdo_mysql
+
+ENV APACHE_DOCUMENT_ROOT /var/www/html/web
+
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+
+
+WORKDIR /var/www/html

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Service;
 
 /**
  * Class Validator

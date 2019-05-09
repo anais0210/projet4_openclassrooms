@@ -6,15 +6,10 @@ services:
       context: ./php
     container_name: php
     volumes:
-      - "../:/var/www/projet_openclassrooms/projet4_openclassrooms"
-  nginx:
-    image: nginx
-    container_name: nginx
+      - "../:/var/www/html"
     ports:
       - "80:80"
-    volumes:
-      - "../:/var/www/projet_openclassrooms/projet4_openclassrooms"
-      - "./nginx/conf.d/project.conf:/etc/nginx/conf.d/project.conf"
+
   db:
     image: mysql:5.7
     environment:

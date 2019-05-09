@@ -1,6 +1,12 @@
 <?php
 
-namespace App;
+namespace Controller;
+
+use App\Config\Kernel;
+use App\Config\KernelComponent;
+use Repository\Managers;
+use App\Config\Page;
+use Repository\PDOFactory;
 
 /**
  * Class BackOfficeController

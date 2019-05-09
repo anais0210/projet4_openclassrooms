@@ -2,8 +2,8 @@
 
 namespace App\BackOffice\Modules\Connexion;
 
-use App\BackOfficeController;
-use App\HTTPRequest;
+use Controller\BackOfficeController;
+use App\COnfig\HTTPRequest;
 
 /**
  * Class ConnexionController

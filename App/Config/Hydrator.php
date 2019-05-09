@@ -1,6 +1,7 @@
 <?php
 
-namespace App;
+namespace App\Config;
+
 /**
  * Trait Hydrator
  * @package App

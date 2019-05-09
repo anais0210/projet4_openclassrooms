@@ -2,7 +2,7 @@
 
 namespace App\FrontOffice\Modules\News;
 
-use App\BackOfficeController;
+use App\Controller\BackOfficeController;
 use App\HTTPRequest;
 use FormBuilder\CommentFormBuilder;
 use Entity\Comment;
@@ -15,10 +15,8 @@ class NewsController extends BackOfficeController
         $nombreNews = $this->app->config()->get('nombre_news');
         $nombreCaracteres = $this->app->config()->get('nombre_caracteres');
 
-        // On ajoute une définition pour le titre.
         $this->page->addVar('title', 'Liste des ' . $nombreNews . ' dernières news');
 
-        // On récupère le manager des news.
         $manager = $this->managers->getManagerOf('News');
 
         $listeNews = $manager->getList(0, $nombreNews);
@@ -32,7 +30,6 @@ class NewsController extends BackOfficeController
             }
         }
 
-        // On ajoute la variable $listeNews à la vue.
         $this->page->addVar('listeNews', $listeNews);
     }
 
@@ -51,7 +48,6 @@ class NewsController extends BackOfficeController
 
     public function executeInsertComment(HTTPRequest $request)
     {
-        // Si le formulaire a été envoyé.
         if ($request->method() == 'POST') {
             $comment = new Comment([
                 'news' => $request->getData('news'),
